@@ -102,13 +102,13 @@ int PasswdMgr::updateUserEntry(const std::string& userName,
 
 void PasswdMgr::checkAndReload(void)
 {
-    std::time_t updatedTime = getUpdatedFileTime();
-    if (fileLastUpdatedTime != updatedTime && updatedTime != -1)
-    {
+    //std::time_t updatedTime = getUpdatedFileTime();
+    //if (fileLastUpdatedTime != updatedTime && updatedTime != -1)
+    //{
         log<level::DEBUG>("Reloading password map list");
         passwdMapList.clear();
         initPasswordMap();
-    }
+    //}
 }
 
 int PasswdMgr::encryptDecryptData(bool doEncrypt, const EVP_CIPHER* cipher,

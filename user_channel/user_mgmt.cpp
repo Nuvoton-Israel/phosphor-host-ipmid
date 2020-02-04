@@ -1458,13 +1458,13 @@ void UserAccess::deleteUserIndex(const size_t& usrIdx)
 
 void UserAccess::checkAndReloadUserData()
 {
-    std::time_t updateTime = getUpdatedFileTime();
-    if (updateTime != fileLastUpdatedTime || updateTime == -EIO)
-    {
+    //std::time_t updateTime = getUpdatedFileTime();
+    //if (updateTime != fileLastUpdatedTime || updateTime == -EIO)
+    //{
         std::fill(reinterpret_cast<uint8_t*>(&usersTbl),
                   reinterpret_cast<uint8_t*>(&usersTbl) + sizeof(usersTbl), 0);
         readUserData();
-    }
+    //}
     return;
 }
 
