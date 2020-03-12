@@ -159,22 +159,15 @@ inline static uint8_t getSensorEventTypeFromPath(const std::string& path)
 
 inline static std::string getPathFromSensorNumber(uint8_t sensorNum)
 {
-    SensorSubTree sensorTree;
     std::string path;
-    if (!getSensorSubtree(sensorTree))
-        return path;
 
-    if (sensorTree.size() < sensorNum)
+    // Refer to sensor.yaml
+    for (auto sensor = ipmi::sensor::sensors.begin();
+         sensor != ipmi::sensor::sensors.end(); sensor++)
     {
-        return path;
-    }
-
-    uint8_t sensorIndex = sensorNum;
-    for (const auto& sensor : sensorTree)
-    {
-        if (sensorIndex-- == 0)
+        if (sensor->first == sensorNum)
         {
-            path = sensor.first;
+            path = sensor->second.sensorPath;
             break;
         }
     }
