@@ -51,11 +51,11 @@ struct MetaPassStruct
 {
     char signature[10];
     unsigned char reseved[2];
-    size_t hashSize;
-    size_t ivSize;
-    size_t dataSize;
-    size_t padSize;
-    size_t macSize;
+    unsigned int hashSize;
+    unsigned int ivSize;
+    unsigned int dataSize;
+    unsigned int padSize;
+    unsigned int macSize;
 };
 
 using namespace phosphor::logging;
